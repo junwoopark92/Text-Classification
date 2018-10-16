@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 from sklearn.utils import shuffle
 names = ["class", "title", "content"]
 
@@ -21,6 +21,7 @@ def load_data(file_name, sample_ratio=1, n_class=15, names=names, one_hot=True):
     return x, y
 
 
+
 def data_preprocessing(train, test, max_len):
     """transform to one-hot idx vector by VocabularyProcessor"""
     """VocabularyProcessor is deprecated, use v2 instead"""
@@ -34,6 +35,7 @@ def data_preprocessing(train, test, max_len):
     x_train = np.array(x_train_list)
     x_test = np.array(x_test_list)
 
+
     return x_train, x_test, vocab, vocab_size
 
 
@@ -45,7 +47,7 @@ def data_preprocessing_v2(train, test, max_len, max_words=50000):
     train_padded = pad_sequences(train_idx, maxlen=max_len, padding='post', truncating='post')
     test_padded = pad_sequences(test_idx, maxlen=max_len, padding='post', truncating='post')
     # vocab size = len(word_docs) + 2  (<UNK>, <PAD>)
-    return train_padded, test_padded, max_words + 2
+    return train_padded, test_padded, tokenizer
 
 
 def data_preprocessing_with_dict(train, test, max_len):
@@ -72,10 +74,14 @@ def split_dataset(x_test, y_test, dev_ratio):
     return x_test, x_dev, y_test, y_dev, dev_size, test_size - dev_size
 
 
-def fill_feed_dict(data_X, data_Y, batch_size):
+def fill_feed_dict(data_X, data_Y, batch_size, isshuffle=True):
     """Generator to yield batches"""
     # Shuffle data first.
-    shuffled_X, shuffled_Y = shuffle(data_X, data_Y)
+    if isshuffle:
+        shuffled_X, shuffled_Y = shuffle(data_X, data_Y)
+    else:
+        shuffled_X, shuffled_Y = data_X, data_Y
+
     # print("before shuffle: ", data_Y[:10])
     # print(data_X.shape[0])
     # perm = np.random.permutation(data_X.shape[0])

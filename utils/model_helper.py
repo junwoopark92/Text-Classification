@@ -33,6 +33,12 @@ def run_eval_step(model, sess, batch):
     return acc
 
 
+def get_prediction(model, sess, batch):
+    feed_dict = make_test_feed_dict(model, batch)
+    prediction = sess.run(model.prediction, feed_dict)
+    return prediction
+
+
 def get_attn_weight(model, sess, batch):
     feed_dict = make_train_feed_dict(model, batch)
     return sess.run(model.alpha, feed_dict)

@@ -1,4 +1,4 @@
-from modules.multihead import *
+from models.modules.multihead import *
 from utils.model_helper import *
 import time
 from utils.prepare_data import *
