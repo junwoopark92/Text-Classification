@@ -6,20 +6,23 @@ from utils.model_helper import *
 
 
 class ABLSTM(object):
-    def __init__(self, config):
+    def __init__(self, sess, config):
+        self.sess = sess
         self.max_len = config["max_len"]
         self.hidden_size = config["hidden_size"]
         self.vocab_size = config["vocab_size"]
         self.embedding_size = config["embedding_size"]
         self.n_class = config["n_class"]
-        self.learning_rate = config["learning_rate"]
 
         # placeholder
         self.x = tf.placeholder(tf.int32, [None, self.max_len])
         self.label = tf.placeholder(tf.int32, [None])
         self.keep_prob = tf.placeholder(tf.float32)
+        self.LEARNING_RATE = tf.placeholder(tf.float32)
 
-    def build_graph(self):
+
+
+    def build_graph(self, writer):
         print("building graph")
         # Word embedding
         embeddings_var = tf.Variable(tf.random_uniform([self.vocab_size, self.embedding_size], -1.0, 1.0),
@@ -51,11 +54,19 @@ class ABLSTM(object):
         FC_b = tf.Variable(tf.constant(0., shape=[self.n_class]))
         y_hat = tf.nn.xw_plus_b(h_drop, FC_W, FC_b)
 
+
         self.loss = tf.reduce_mean(
             tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y_hat, labels=self.label))
+        tf.summary.scalar('loss', self.loss)
 
         # prediction
         self.prediction = tf.argmax(tf.nn.softmax(y_hat), 1)
+        self.proba = tf.nn.softmax(y_hat)
+
+
+        correct_prediction = tf.equal(tf.cast(self.prediction,tf.int32), self.label)
+        self.accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='acc')
+        tf.summary.scalar('accuracy', self.accuracy)
 
         # optimization
         loss_to_minimize = self.loss
@@ -64,9 +75,15 @@ class ABLSTM(object):
         grads, global_norm = tf.clip_by_global_norm(gradients, 1.0)
 
         self.global_step = tf.Variable(0, name="global_step", trainable=False)
-        self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
+        self.optimizer = tf.train.AdamOptimizer(self.LEARNING_RATE)
         self.train_op = self.optimizer.apply_gradients(zip(grads, tvars), global_step=self.global_step,
                                                        name='train_step')
+
+        # writer
+        self.merge = tf.summary.merge_all()
+        self.train_writer = tf.summary.FileWriter("./output/{}/train_{}".format(writer, writer), self.sess.graph)
+        self.test_writer = tf.summary.FileWriter("./output/{}/test_{}".format(writer, writer), self.sess.graph)
+
         print("graph built successfully!")
 
 
