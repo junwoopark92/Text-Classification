@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcd84834-4d8d-4aae-b5b8-3c66e3ffe136" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/attn_bi_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/attn_bi_lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/korean_attention_bidirectinal_char.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/models/korean_attention_bidirectinal_char.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/korean_attention_bidirectinal_jamo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/models/korean_attention_bidirectinal_jamo.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/model_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/model_helper.py" afterDir="false" />
-    </list>
+    <list default="true" id="bcd84834-4d8d-4aae-b5b8-3c66e3ffe136" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,6 +180,48 @@
             <path>
               <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
               <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+              <item name="attn_bilstm_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+              <item name="attn_bilstm_test" type="462c0819:PsiDirectoryNode" />
+              <item name="test_attn_bilstm_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+              <item name="attn_bilstm_test" type="462c0819:PsiDirectoryNode" />
+              <item name="train_attn_bilstm_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="Saver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="Saver" type="462c0819:PsiDirectoryNode" />
+              <item name="attn_bilstm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Text-Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Text-Classification" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -288,8 +324,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32935324" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3283582" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32935324" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16932908" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32935324" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16932908" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
