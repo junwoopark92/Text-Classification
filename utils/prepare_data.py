@@ -92,3 +92,24 @@ def fill_feed_dict(data_X, data_Y, batch_size, isshuffle=True):
         x_batch = shuffled_X[batch_size * idx: batch_size * (idx + 1)]
         y_batch = shuffled_Y[batch_size * idx: batch_size * (idx + 1)]
         yield x_batch, y_batch
+
+
+def shared_fill_feed_dict(data_X, data_Y, data_dis, batch_size, isshuffle=True):
+    """Generator to yield batches"""
+    # Shuffle data first.
+    if isshuffle:
+        shuffled_X, shuffled_Y, shuffled_dis = shuffle(data_X, data_Y, data_dis)
+    else:
+        shuffled_X, shuffled_Y, shuffled_dis  = data_X, data_Y, data_dis
+
+    # print("before shuffle: ", data_Y[:10])
+    # print(data_X.shape[0])
+    # perm = np.random.permutation(data_X.shape[0])
+    # data_X = data_X[perm]
+    # shuffled_Y = data_Y[perm]
+    # print("after shuffle: ", shuffled_Y[:10])
+    for idx in range(data_X.shape[0] // batch_size):
+        x_batch = shuffled_X[batch_size * idx: batch_size * (idx + 1)]
+        y_batch = shuffled_Y[batch_size * idx: batch_size * (idx + 1)]
+        dis_batch = shuffled_dis[batch_size * idx: batch_size * (idx + 1)]
+        yield x_batch, y_batch, dis_batch
