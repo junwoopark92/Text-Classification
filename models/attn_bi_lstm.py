@@ -62,6 +62,7 @@ class ABLSTM(object):
 
         # prediction
         self.prediction = tf.argmax(tf.nn.softmax(y_hat), 1)
+        self.predictions_topk = tf.nn.top_k(tf.nn.softmax(y_hat), 5)
         self.proba = tf.nn.softmax(y_hat)
 
 
